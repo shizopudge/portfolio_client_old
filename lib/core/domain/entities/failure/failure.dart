@@ -10,13 +10,13 @@ sealed class Failure extends Equatable {
 }
 
 @JsonSerializable()
-class UnknownFailure extends Failure {
-  const UnknownFailure({super.message = 'Something went wrong'});
+class CasualFailure extends Failure {
+  const CasualFailure({super.message = 'Something went wrong'});
 
-  factory UnknownFailure.fromJson(Map<String, dynamic> json) =>
-      _$UnknownFailureFromJson(json);
+  factory CasualFailure.fromJson(Map<String, dynamic> json) =>
+      _$CasualFailureFromJson(json);
 
-  Map<String, dynamic> toJson() => _$UnknownFailureToJson(this);
+  Map<String, dynamic> toJson() => _$CasualFailureToJson(this);
 
   @override
   List<Object?> get props => [message];

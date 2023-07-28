@@ -4,4 +4,6 @@ class Assets {
   static const String cursor2 = 'assets/icons/cursor_2.svg';
   static const String clickCursor1 = 'assets/icons/click_cursor_1.svg';
   static const String wallpaper1 = 'assets/images/wallpaper-1.jpg';
+  static const String avatar = 'assets/images/avatar.png';
+  static const String person = 'assets/images/person.png';
 }

@@ -1,5 +1,5 @@
-import 'capitalize_first_letter.dart';
 import '../domain/entities/failure/failure.dart';
+import 'capitalize_first_letter.dart';
 
 extension FailureMessageToString on Failure {
   String messageToString() {

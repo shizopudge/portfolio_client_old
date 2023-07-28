@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/domain/entities/failure/failure.dart';
+
 abstract interface class SettingsLocalDataSource {
   Future<void> preloadAssetImage({
     required BuildContext context,
@@ -15,6 +17,8 @@ class SettingsLocalDataSourceImpl implements SettingsLocalDataSource {
   }) async {
     try {
       await precacheImage(image, context);
-    } catch (e) {}
+    } catch (e) {
+      throw CasualFailure(message: e.toString());
+    }
   }
 }

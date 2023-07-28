@@ -62,6 +62,7 @@ class Responsive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Adaptive.init(context);
     if (Adaptive.isMobile) return mobile;
     if (Adaptive.isTablet) return tablet;
     return desktop;
