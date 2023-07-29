@@ -17,8 +17,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_SignInAsGuest>(_signInAsGuest);
   }
 
-  FutureOr<void> _started(_Started event, Emitter<AuthState> emit) {
+  FutureOr<void> _started(_Started event, Emitter<AuthState> emit) async {
     // Check is user signed in or guest
+    await Future.delayed(const Duration(milliseconds: 500));
+    emit(state.copyWith(status: AuthStatus.notAuthorized));
   }
 
   void _toggleSignInForm(_ToggleSignInForm event, Emitter<AuthState> emit) {

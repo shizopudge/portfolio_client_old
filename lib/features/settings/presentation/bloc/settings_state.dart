@@ -19,6 +19,17 @@ class SettingsState with _$SettingsState {
     Failure? failure,
   }) = _SettingsState;
 
+  void when({
+    VoidCallback? whenLoading,
+    VoidCallback? whenLoaded,
+    VoidCallback? whenFailure,
+  }) =>
+      switch (status) {
+        SettingsStatus.loading => whenLoading?.call(),
+        SettingsStatus.loaded => whenLoaded?.call(),
+        SettingsStatus.failure => whenFailure?.call(),
+      };
+
   bool get isLoading => status.isLoading;
   bool get isLoaded => status.isLoaded;
   bool get isFailure => status.isFailure;

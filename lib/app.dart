@@ -1,11 +1,11 @@
-import 'features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/services/adaptative.dart';
-import 'core/services/get_it.dart';
+import 'core/services/di.dart';
 import 'core/services/router.dart';
 import 'core/styles/colors.dart';
+import 'features/auth/presentation/bloc/auth_bloc.dart';
 import 'features/settings/data/repositories/settings_repository_impl.dart';
 import 'features/settings/domain/usecases/preload_asset_image.dart';
 import 'features/settings/presentation/bloc/settings_bloc.dart';

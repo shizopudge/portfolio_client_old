@@ -5,11 +5,13 @@ class HoverAnimation extends StatefulWidget {
   final Widget Function(bool isHovered) builder;
   final Duration duration;
   final Matrix4? matrixOnHover;
+  final bool repeat;
   const HoverAnimation({
     super.key,
     required this.builder,
     this.duration = const Duration(milliseconds: 150),
     this.matrixOnHover,
+    this.repeat = false,
   });
 
   @override
@@ -26,8 +28,7 @@ class _HoverAnimationState extends State<HoverAnimation>
     Vector3(1.5, 1.5, 1.5),
   );
   late final AnimationController _hoverAnimationController =
-      AnimationController(
-          vsync: this, duration: const Duration(milliseconds: 100));
+      AnimationController(vsync: this, duration: widget.duration);
   late final Animation<Matrix4> _hoverAnimation = Matrix4Tween(
           begin: _initialMatrix, end: widget.matrixOnHover ?? _matrixOnHover)
       .animate(_hoverAnimationController);
@@ -42,8 +43,20 @@ class _HoverAnimationState extends State<HoverAnimation>
   Widget build(BuildContext context) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
-      onEnter: (event) => _hoverAnimationController.forward(),
-      onExit: (event) => _hoverAnimationController.reverse(),
+      onEnter: (event) {
+        if (widget.repeat) {
+          _hoverAnimationController.repeat(reverse: true);
+        } else {
+          _hoverAnimationController.forward();
+        }
+      },
+      onExit: (event) {
+        if (widget.repeat) {
+          _hoverAnimationController.stop();
+        } else {
+          _hoverAnimationController.reverse();
+        }
+      },
       child: AnimatedBuilder(
         animation: _hoverAnimation,
         builder: (context, _) => AnimatedContainer(

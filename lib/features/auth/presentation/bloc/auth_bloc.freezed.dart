@@ -855,7 +855,7 @@ class _$_AuthState extends _AuthState {
   const _$_AuthState(
       {this.username = '',
       this.password = '',
-      this.status = AuthStatus.notAuthorized})
+      this.status = AuthStatus.loading})
       : super._();
 
   @override

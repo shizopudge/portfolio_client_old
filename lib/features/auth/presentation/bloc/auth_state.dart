@@ -1,15 +1,17 @@
 part of 'auth_bloc.dart';
 
 enum AuthStatus {
+  loading,
   notAuthorized,
   signingIn,
   authorized,
   guest,
   failure;
 
+  bool get isLoading => this == AuthStatus.loading;
+  bool get isNotAuthorized => this == AuthStatus.notAuthorized;
   bool get isSigningIn => this == AuthStatus.signingIn;
   bool get isAuthorized => this == AuthStatus.authorized;
-  bool get isNotAuthorized => this == AuthStatus.notAuthorized;
   bool get isGuest => this == AuthStatus.guest;
   bool get isFailure => this == AuthStatus.failure;
 }
@@ -20,10 +22,11 @@ class AuthState with _$AuthState {
   const factory AuthState({
     @Default('') String username,
     @Default('') String password,
-    @Default(AuthStatus.notAuthorized) AuthStatus status,
+    @Default(AuthStatus.loading) AuthStatus status,
   }) = _AuthState;
 
-  void whenOrNull({
+  void when({
+    VoidCallback? whenLoading,
     VoidCallback? whenNotAuthorized,
     VoidCallback? whenSigningIn,
     VoidCallback? whenAuthorized,
@@ -31,6 +34,7 @@ class AuthState with _$AuthState {
     VoidCallback? whenFailure,
   }) =>
       switch (status) {
+        AuthStatus.loading => whenLoading?.call(),
         AuthStatus.notAuthorized => whenNotAuthorized?.call(),
         AuthStatus.signingIn => whenSigningIn?.call(),
         AuthStatus.authorized => whenAuthorized?.call(),
@@ -38,6 +42,7 @@ class AuthState with _$AuthState {
         AuthStatus.failure => whenFailure?.call(),
       };
 
+  bool get isLoading => status.isLoading;
   bool get isSigningIn => status.isSigningIn;
   bool get isAuthorized => status.isAuthorized;
   bool get isNotAuthorized => status.isNotAuthorized;

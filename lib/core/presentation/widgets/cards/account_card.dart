@@ -1,9 +1,9 @@
-import '../../../../core/constants/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart';
 
-import '../../../../core/presentation/animations/hover_animation.dart';
-import '../../../../core/styles/colors.dart';
+import '../../../constants/assets.dart';
+import '../../../styles/colors.dart';
+import '../../animations/hover_animation.dart';
 
 class AccountCard {
   final VoidCallback onTap;

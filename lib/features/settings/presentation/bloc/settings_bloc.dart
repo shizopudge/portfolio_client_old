@@ -27,8 +27,14 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   FutureOr<void> _started(_Started event, Emitter<SettingsState> emit) async {
     emit(state.copyWith(status: SettingsStatus.loading));
     const AssetImage wallpaper = AssetImage(Assets.wallpaper1);
-    await _preloadAssetImageUsecase
+    final res = await _preloadAssetImageUsecase
         .call(PreloadAssetImageParams(context: context, image: wallpaper));
-    emit(state.copyWith(status: SettingsStatus.loaded, wallpaper: wallpaper));
+    res.fold(
+      (l) =>
+          state.copyWith(status: SettingsStatus.loaded, wallpaper: wallpaper),
+      (r) => emit(
+        state.copyWith(status: SettingsStatus.loaded, wallpaper: wallpaper),
+      ),
+    );
   }
 }

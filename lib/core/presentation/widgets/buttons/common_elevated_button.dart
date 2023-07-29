@@ -51,7 +51,7 @@ class CommonElevatedButton extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.all(21),
             backgroundColor: Pallete.primary,
-            disabledBackgroundColor: Pallete.addition,
+            disabledBackgroundColor: Pallete.primary.withOpacity(.5),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(27),
             ),
