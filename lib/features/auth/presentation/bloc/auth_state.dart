@@ -23,6 +23,7 @@ class AuthState with _$AuthState {
     @Default('') String username,
     @Default('') String password,
     @Default(AuthStatus.loading) AuthStatus status,
+    Failure? failure,
   }) = _AuthState;
 
   void when({

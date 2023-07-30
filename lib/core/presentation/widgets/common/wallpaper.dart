@@ -1,12 +1,10 @@
-import '../../animations/blur_animation.dart';
-
-import '../../animations/opacity_animation.dart';
-
-import '../../../styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../features/settings/presentation/bloc/settings_bloc.dart';
+import '../../../styles/colors.dart';
+import '../../animations/blur_animation.dart';
+import '../../animations/opacity_animation.dart';
 
 class Wallpaper extends StatelessWidget {
   const Wallpaper({

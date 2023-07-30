@@ -52,7 +52,7 @@ class AuthWeb extends StatelessWidget {
                         duration: Duration(milliseconds: 650),
                         child: Greeting(
                           height: 100,
-                          width: 500,
+                          width: 800,
                         ),
                       ),
                     ),

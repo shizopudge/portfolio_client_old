@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'core/domain/entities/scroll_behavior/scroll_behavior.dart';
+import 'core/presentation/widgets/common/app_skeleton.dart';
 import 'core/services/adaptative.dart';
 import 'core/services/di.dart';
 import 'core/services/router.dart';
 import 'core/styles/colors.dart';
 import 'features/auth/presentation/bloc/auth_bloc.dart';
+import 'features/auth/presentation/pages/auth_page.dart';
+import 'features/home/presentation/pages/home_page.dart';
 import 'features/settings/data/repositories/settings_repository_impl.dart';
 import 'features/settings/domain/usecases/preload_asset_image.dart';
 import 'features/settings/presentation/bloc/settings_bloc.dart';
@@ -33,8 +37,11 @@ class _AppState extends State<App> {
         BlocProvider(
           create: (_) => AuthBloc(),
         ),
+        BlocProvider(
+          create: (_) => AppRouterCubit(),
+        ),
       ],
-      child: MaterialApp.router(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: const ColorScheme.dark(),
@@ -42,7 +49,18 @@ class _AppState extends State<App> {
           useMaterial3: true,
           scaffoldBackgroundColor: Pallete.primary,
         ),
-        routerConfig: AppRouter.router,
+        scrollBehavior: MyCustomScrollBehavior(),
+        onGenerateRoute: getIt<AppRouter>().onGenerateRoute,
+        navigatorObservers: [
+          AppRouterObserver(),
+        ],
+        builder: (context, child) {
+          final String? currPath = context.watch<AppRouterCubit>().state;
+          if (currPath == AuthPage.path || currPath == HomePage.path) {
+            return AppSkeleton(child: child);
+          }
+          return child ?? const SizedBox.shrink();
+        },
       ),
     );
   }

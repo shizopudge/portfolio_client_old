@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import '../../features/settings/data/datasources/settings_local_data_source.dart';
 import '../../features/settings/data/repositories/settings_repository_impl.dart';
 import 'dio.dart';
+import 'router.dart';
 
 final getIt = GetIt.instance;
 
@@ -14,4 +15,7 @@ Future<void> setup() async {
   /// Repositories
   getIt.registerSingleton(
       SettingsRepositoryImpl(localDataSource: SettingsLocalDataSourceImpl()));
+
+  /// Router
+  getIt.registerSingleton(AppRouter());
 }

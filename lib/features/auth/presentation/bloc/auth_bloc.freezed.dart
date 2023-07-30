@@ -23,6 +23,7 @@ mixin _$AuthEvent {
     required TResult Function(String username) setUsername,
     required TResult Function(String password) setPassword,
     required TResult Function() signInAsGuest,
+    required TResult Function() logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$AuthEvent {
     TResult? Function(String username)? setUsername,
     TResult? Function(String password)? setPassword,
     TResult? Function()? signInAsGuest,
+    TResult? Function()? logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$AuthEvent {
     TResult Function(String username)? setUsername,
     TResult Function(String password)? setPassword,
     TResult Function()? signInAsGuest,
+    TResult Function()? logout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$AuthEvent {
     required TResult Function(_SetUsername value) setUsername,
     required TResult Function(_SetPassword value) setPassword,
     required TResult Function(_SignInAsGuest value) signInAsGuest,
+    required TResult Function(_Logout value) logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$AuthEvent {
     TResult? Function(_SetUsername value)? setUsername,
     TResult? Function(_SetPassword value)? setPassword,
     TResult? Function(_SignInAsGuest value)? signInAsGuest,
+    TResult? Function(_Logout value)? logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$AuthEvent {
     TResult Function(_SetUsername value)? setUsername,
     TResult Function(_SetPassword value)? setPassword,
     TResult Function(_SignInAsGuest value)? signInAsGuest,
+    TResult Function(_Logout value)? logout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,6 +139,7 @@ class _$_Started implements _Started {
     required TResult Function(String username) setUsername,
     required TResult Function(String password) setPassword,
     required TResult Function() signInAsGuest,
+    required TResult Function() logout,
   }) {
     return started();
   }
@@ -145,6 +152,7 @@ class _$_Started implements _Started {
     TResult? Function(String username)? setUsername,
     TResult? Function(String password)? setPassword,
     TResult? Function()? signInAsGuest,
+    TResult? Function()? logout,
   }) {
     return started?.call();
   }
@@ -157,6 +165,7 @@ class _$_Started implements _Started {
     TResult Function(String username)? setUsername,
     TResult Function(String password)? setPassword,
     TResult Function()? signInAsGuest,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -173,6 +182,7 @@ class _$_Started implements _Started {
     required TResult Function(_SetUsername value) setUsername,
     required TResult Function(_SetPassword value) setPassword,
     required TResult Function(_SignInAsGuest value) signInAsGuest,
+    required TResult Function(_Logout value) logout,
   }) {
     return started(this);
   }
@@ -185,6 +195,7 @@ class _$_Started implements _Started {
     TResult? Function(_SetUsername value)? setUsername,
     TResult? Function(_SetPassword value)? setPassword,
     TResult? Function(_SignInAsGuest value)? signInAsGuest,
+    TResult? Function(_Logout value)? logout,
   }) {
     return started?.call(this);
   }
@@ -197,6 +208,7 @@ class _$_Started implements _Started {
     TResult Function(_SetUsername value)? setUsername,
     TResult Function(_SetPassword value)? setPassword,
     TResult Function(_SignInAsGuest value)? signInAsGuest,
+    TResult Function(_Logout value)? logout,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -253,6 +265,7 @@ class _$_ToggleSignInForm implements _ToggleSignInForm {
     required TResult Function(String username) setUsername,
     required TResult Function(String password) setPassword,
     required TResult Function() signInAsGuest,
+    required TResult Function() logout,
   }) {
     return toggleSignInForm();
   }
@@ -265,6 +278,7 @@ class _$_ToggleSignInForm implements _ToggleSignInForm {
     TResult? Function(String username)? setUsername,
     TResult? Function(String password)? setPassword,
     TResult? Function()? signInAsGuest,
+    TResult? Function()? logout,
   }) {
     return toggleSignInForm?.call();
   }
@@ -277,6 +291,7 @@ class _$_ToggleSignInForm implements _ToggleSignInForm {
     TResult Function(String username)? setUsername,
     TResult Function(String password)? setPassword,
     TResult Function()? signInAsGuest,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (toggleSignInForm != null) {
@@ -293,6 +308,7 @@ class _$_ToggleSignInForm implements _ToggleSignInForm {
     required TResult Function(_SetUsername value) setUsername,
     required TResult Function(_SetPassword value) setPassword,
     required TResult Function(_SignInAsGuest value) signInAsGuest,
+    required TResult Function(_Logout value) logout,
   }) {
     return toggleSignInForm(this);
   }
@@ -305,6 +321,7 @@ class _$_ToggleSignInForm implements _ToggleSignInForm {
     TResult? Function(_SetUsername value)? setUsername,
     TResult? Function(_SetPassword value)? setPassword,
     TResult? Function(_SignInAsGuest value)? signInAsGuest,
+    TResult? Function(_Logout value)? logout,
   }) {
     return toggleSignInForm?.call(this);
   }
@@ -317,6 +334,7 @@ class _$_ToggleSignInForm implements _ToggleSignInForm {
     TResult Function(_SetUsername value)? setUsername,
     TResult Function(_SetPassword value)? setPassword,
     TResult Function(_SignInAsGuest value)? signInAsGuest,
+    TResult Function(_Logout value)? logout,
     required TResult orElse(),
   }) {
     if (toggleSignInForm != null) {
@@ -400,6 +418,7 @@ class _$_SetUsername implements _SetUsername {
     required TResult Function(String username) setUsername,
     required TResult Function(String password) setPassword,
     required TResult Function() signInAsGuest,
+    required TResult Function() logout,
   }) {
     return setUsername(username);
   }
@@ -412,6 +431,7 @@ class _$_SetUsername implements _SetUsername {
     TResult? Function(String username)? setUsername,
     TResult? Function(String password)? setPassword,
     TResult? Function()? signInAsGuest,
+    TResult? Function()? logout,
   }) {
     return setUsername?.call(username);
   }
@@ -424,6 +444,7 @@ class _$_SetUsername implements _SetUsername {
     TResult Function(String username)? setUsername,
     TResult Function(String password)? setPassword,
     TResult Function()? signInAsGuest,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (setUsername != null) {
@@ -440,6 +461,7 @@ class _$_SetUsername implements _SetUsername {
     required TResult Function(_SetUsername value) setUsername,
     required TResult Function(_SetPassword value) setPassword,
     required TResult Function(_SignInAsGuest value) signInAsGuest,
+    required TResult Function(_Logout value) logout,
   }) {
     return setUsername(this);
   }
@@ -452,6 +474,7 @@ class _$_SetUsername implements _SetUsername {
     TResult? Function(_SetUsername value)? setUsername,
     TResult? Function(_SetPassword value)? setPassword,
     TResult? Function(_SignInAsGuest value)? signInAsGuest,
+    TResult? Function(_Logout value)? logout,
   }) {
     return setUsername?.call(this);
   }
@@ -464,6 +487,7 @@ class _$_SetUsername implements _SetUsername {
     TResult Function(_SetUsername value)? setUsername,
     TResult Function(_SetPassword value)? setPassword,
     TResult Function(_SignInAsGuest value)? signInAsGuest,
+    TResult Function(_Logout value)? logout,
     required TResult orElse(),
   }) {
     if (setUsername != null) {
@@ -552,6 +576,7 @@ class _$_SetPassword implements _SetPassword {
     required TResult Function(String username) setUsername,
     required TResult Function(String password) setPassword,
     required TResult Function() signInAsGuest,
+    required TResult Function() logout,
   }) {
     return setPassword(password);
   }
@@ -564,6 +589,7 @@ class _$_SetPassword implements _SetPassword {
     TResult? Function(String username)? setUsername,
     TResult? Function(String password)? setPassword,
     TResult? Function()? signInAsGuest,
+    TResult? Function()? logout,
   }) {
     return setPassword?.call(password);
   }
@@ -576,6 +602,7 @@ class _$_SetPassword implements _SetPassword {
     TResult Function(String username)? setUsername,
     TResult Function(String password)? setPassword,
     TResult Function()? signInAsGuest,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (setPassword != null) {
@@ -592,6 +619,7 @@ class _$_SetPassword implements _SetPassword {
     required TResult Function(_SetUsername value) setUsername,
     required TResult Function(_SetPassword value) setPassword,
     required TResult Function(_SignInAsGuest value) signInAsGuest,
+    required TResult Function(_Logout value) logout,
   }) {
     return setPassword(this);
   }
@@ -604,6 +632,7 @@ class _$_SetPassword implements _SetPassword {
     TResult? Function(_SetUsername value)? setUsername,
     TResult? Function(_SetPassword value)? setPassword,
     TResult? Function(_SignInAsGuest value)? signInAsGuest,
+    TResult? Function(_Logout value)? logout,
   }) {
     return setPassword?.call(this);
   }
@@ -616,6 +645,7 @@ class _$_SetPassword implements _SetPassword {
     TResult Function(_SetUsername value)? setUsername,
     TResult Function(_SetPassword value)? setPassword,
     TResult Function(_SignInAsGuest value)? signInAsGuest,
+    TResult Function(_Logout value)? logout,
     required TResult orElse(),
   }) {
     if (setPassword != null) {
@@ -677,6 +707,7 @@ class _$_SignInAsGuest implements _SignInAsGuest {
     required TResult Function(String username) setUsername,
     required TResult Function(String password) setPassword,
     required TResult Function() signInAsGuest,
+    required TResult Function() logout,
   }) {
     return signInAsGuest();
   }
@@ -689,6 +720,7 @@ class _$_SignInAsGuest implements _SignInAsGuest {
     TResult? Function(String username)? setUsername,
     TResult? Function(String password)? setPassword,
     TResult? Function()? signInAsGuest,
+    TResult? Function()? logout,
   }) {
     return signInAsGuest?.call();
   }
@@ -701,6 +733,7 @@ class _$_SignInAsGuest implements _SignInAsGuest {
     TResult Function(String username)? setUsername,
     TResult Function(String password)? setPassword,
     TResult Function()? signInAsGuest,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (signInAsGuest != null) {
@@ -717,6 +750,7 @@ class _$_SignInAsGuest implements _SignInAsGuest {
     required TResult Function(_SetUsername value) setUsername,
     required TResult Function(_SetPassword value) setPassword,
     required TResult Function(_SignInAsGuest value) signInAsGuest,
+    required TResult Function(_Logout value) logout,
   }) {
     return signInAsGuest(this);
   }
@@ -729,6 +763,7 @@ class _$_SignInAsGuest implements _SignInAsGuest {
     TResult? Function(_SetUsername value)? setUsername,
     TResult? Function(_SetPassword value)? setPassword,
     TResult? Function(_SignInAsGuest value)? signInAsGuest,
+    TResult? Function(_Logout value)? logout,
   }) {
     return signInAsGuest?.call(this);
   }
@@ -741,6 +776,7 @@ class _$_SignInAsGuest implements _SignInAsGuest {
     TResult Function(_SetUsername value)? setUsername,
     TResult Function(_SetPassword value)? setPassword,
     TResult Function(_SignInAsGuest value)? signInAsGuest,
+    TResult Function(_Logout value)? logout,
     required TResult orElse(),
   }) {
     if (signInAsGuest != null) {
@@ -755,10 +791,135 @@ abstract class _SignInAsGuest implements AuthEvent {
 }
 
 /// @nodoc
+abstract class _$$_LogoutCopyWith<$Res> {
+  factory _$$_LogoutCopyWith(_$_Logout value, $Res Function(_$_Logout) then) =
+      __$$_LogoutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_LogoutCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$_Logout>
+    implements _$$_LogoutCopyWith<$Res> {
+  __$$_LogoutCopyWithImpl(_$_Logout _value, $Res Function(_$_Logout) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_Logout implements _Logout {
+  const _$_Logout();
+
+  @override
+  String toString() {
+    return 'AuthEvent.logout()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Logout);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() toggleSignInForm,
+    required TResult Function(String username) setUsername,
+    required TResult Function(String password) setPassword,
+    required TResult Function() signInAsGuest,
+    required TResult Function() logout,
+  }) {
+    return logout();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? toggleSignInForm,
+    TResult? Function(String username)? setUsername,
+    TResult? Function(String password)? setPassword,
+    TResult? Function()? signInAsGuest,
+    TResult? Function()? logout,
+  }) {
+    return logout?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? toggleSignInForm,
+    TResult Function(String username)? setUsername,
+    TResult Function(String password)? setPassword,
+    TResult Function()? signInAsGuest,
+    TResult Function()? logout,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_ToggleSignInForm value) toggleSignInForm,
+    required TResult Function(_SetUsername value) setUsername,
+    required TResult Function(_SetPassword value) setPassword,
+    required TResult Function(_SignInAsGuest value) signInAsGuest,
+    required TResult Function(_Logout value) logout,
+  }) {
+    return logout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_ToggleSignInForm value)? toggleSignInForm,
+    TResult? Function(_SetUsername value)? setUsername,
+    TResult? Function(_SetPassword value)? setPassword,
+    TResult? Function(_SignInAsGuest value)? signInAsGuest,
+    TResult? Function(_Logout value)? logout,
+  }) {
+    return logout?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_ToggleSignInForm value)? toggleSignInForm,
+    TResult Function(_SetUsername value)? setUsername,
+    TResult Function(_SetPassword value)? setPassword,
+    TResult Function(_SignInAsGuest value)? signInAsGuest,
+    TResult Function(_Logout value)? logout,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Logout implements AuthEvent {
+  const factory _Logout() = _$_Logout;
+}
+
+/// @nodoc
 mixin _$AuthState {
   String get username => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   AuthStatus get status => throw _privateConstructorUsedError;
+  Failure? get failure => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -770,7 +931,8 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({String username, String password, AuthStatus status});
+  $Res call(
+      {String username, String password, AuthStatus status, Failure? failure});
 }
 
 /// @nodoc
@@ -789,6 +951,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? username = null,
     Object? password = null,
     Object? status = null,
+    Object? failure = freezed,
   }) {
     return _then(_value.copyWith(
       username: null == username
@@ -803,6 +966,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as AuthStatus,
+      failure: freezed == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure?,
     ) as $Val);
   }
 }
@@ -814,7 +981,8 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       __$$_AuthStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String username, String password, AuthStatus status});
+  $Res call(
+      {String username, String password, AuthStatus status, Failure? failure});
 }
 
 /// @nodoc
@@ -831,6 +999,7 @@ class __$$_AuthStateCopyWithImpl<$Res>
     Object? username = null,
     Object? password = null,
     Object? status = null,
+    Object? failure = freezed,
   }) {
     return _then(_$_AuthState(
       username: null == username
@@ -845,6 +1014,10 @@ class __$$_AuthStateCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as AuthStatus,
+      failure: freezed == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure?,
     ));
   }
 }
@@ -855,7 +1028,8 @@ class _$_AuthState extends _AuthState {
   const _$_AuthState(
       {this.username = '',
       this.password = '',
-      this.status = AuthStatus.loading})
+      this.status = AuthStatus.loading,
+      this.failure})
       : super._();
 
   @override
@@ -867,10 +1041,12 @@ class _$_AuthState extends _AuthState {
   @override
   @JsonKey()
   final AuthStatus status;
+  @override
+  final Failure? failure;
 
   @override
   String toString() {
-    return 'AuthState(username: $username, password: $password, status: $status)';
+    return 'AuthState(username: $username, password: $password, status: $status, failure: $failure)';
   }
 
   @override
@@ -882,11 +1058,13 @@ class _$_AuthState extends _AuthState {
                 other.username == username) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, username, password, status);
+  int get hashCode =>
+      Object.hash(runtimeType, username, password, status, failure);
 
   @JsonKey(ignore: true)
   @override
@@ -899,7 +1077,8 @@ abstract class _AuthState extends AuthState {
   const factory _AuthState(
       {final String username,
       final String password,
-      final AuthStatus status}) = _$_AuthState;
+      final AuthStatus status,
+      final Failure? failure}) = _$_AuthState;
   const _AuthState._() : super._();
 
   @override
@@ -908,6 +1087,8 @@ abstract class _AuthState extends AuthState {
   String get password;
   @override
   AuthStatus get status;
+  @override
+  Failure? get failure;
   @override
   @JsonKey(ignore: true)
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>

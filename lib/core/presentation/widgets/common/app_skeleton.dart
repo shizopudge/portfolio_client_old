@@ -1,20 +1,17 @@
 import 'dart:async';
 
-import '../../../../features/auth/presentation/pages/auth_page.dart';
-
-import 'wallpaper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../features/auth/presentation/bloc/auth_bloc.dart';
 import '../../../../features/settings/presentation/bloc/settings_bloc.dart';
 import '../../../styles/colors.dart';
 import '../../animations/opacity_animation.dart';
 import '../../animations/slide_animation.dart';
+import 'wallpaper.dart';
 
 class AppSkeleton extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   const AppSkeleton({
     super.key,
     required this.child,
@@ -39,74 +36,77 @@ class _AppSkeletonState extends State<AppSkeleton> {
   Widget build(BuildContext context) {
     final authState = context.watch<AuthBloc>().state;
     final settingsState = context.watch<SettingsBloc>().state;
-    if (settingsState.isLoading) return widget.child;
+    if (settingsState.isLoading) return widget.child ?? const SizedBox.shrink();
     return Stack(
       children: [
         const Wallpaper(),
-        widget.child,
+        widget.child ?? const SizedBox.shrink(),
         SlideAnimation(
-          begin: const Offset(0, -1),
-          duration: const Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 400),
           child: OpacityAnimation(
-            duration: const Duration(milliseconds: 700),
+            duration: const Duration(milliseconds: 500),
             child: Container(
-              height: 32,
+              height: 50,
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
               color: Pallete.primary,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  if (authState.isAuthorized || authState.isGuest)
-                    FittedBox(
-                      child: Row(
+              child: FittedBox(
+                child: Row(
+                  children: [
+                    if (authState.isAuthorized || authState.isGuest)
+                      Row(
                         children: [
                           IconButton(
-                            onPressed: () => context.go(AuthPage.authPagePath),
+                            onPressed: () => context
+                                .read<AuthBloc>()
+                                .add(const AuthEvent.logout()),
                             visualDensity: VisualDensity.compact,
+                            padding: EdgeInsets.zero,
                             icon: const Icon(
                               Icons.power_settings_new_rounded,
                             ),
                           ),
+                          const SizedBox(
+                            width: 8,
+                          ),
                           IconButton(
                             onPressed: () {},
-                            visualDensity: VisualDensity.compact,
+                            visualDensity:
+                                VisualDensity.adaptivePlatformDensity,
+                            padding: EdgeInsets.zero,
                             icon: const Icon(
                               Icons.settings,
                             ),
                           ),
-                        ],
-                      ),
-                    )
-                  else
-                    const SizedBox.shrink(),
-                  FittedBox(
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.wifi,
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          'RUS',
-                          style: Theme.of(context).textTheme.bodySmall,
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        ValueListenableBuilder(
-                          valueListenable: _timeOfDayNotifier,
-                          builder: (context, timeOfDay, child) => Text(
-                            timeOfDay.format(context),
-                            style: Theme.of(context).textTheme.bodySmall,
+                          const SizedBox(
+                            width: 8,
                           ),
-                        ),
-                      ],
+                        ],
+                      )
+                    else
+                      const SizedBox.shrink(),
+                    const Icon(
+                      Icons.wifi,
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      'RUS',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    ValueListenableBuilder(
+                      valueListenable: _timeOfDayNotifier,
+                      builder: (context, timeOfDay, child) => Text(
+                        timeOfDay.format(context),
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -7,4 +7,5 @@ class AuthEvent with _$AuthEvent {
   const factory AuthEvent.setUsername(String username) = _SetUsername;
   const factory AuthEvent.setPassword(String password) = _SetPassword;
   const factory AuthEvent.signInAsGuest() = _SignInAsGuest;
+  const factory AuthEvent.logout() = _Logout;
 }

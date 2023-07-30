@@ -4,6 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../core/domain/entities/failure/failure.dart';
+
 part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -15,6 +17,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_SetUsername>(_setUsername);
     on<_SetPassword>(_setPassword);
     on<_SignInAsGuest>(_signInAsGuest);
+    on<_Logout>(_logout);
   }
 
   FutureOr<void> _started(_Started event, Emitter<AuthState> emit) async {
@@ -41,5 +44,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       _SignInAsGuest event, Emitter<AuthState> emit) async {
     // Set guest in shared_prefs
     emit(state.copyWith(status: AuthStatus.guest));
+  }
+
+  FutureOr<void> _logout(event, Emitter<AuthState> emit) async {
+    emit(state.copyWith(status: AuthStatus.notAuthorized));
   }
 }

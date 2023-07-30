@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/services/adaptative.dart';
 import '../../../home/presentation/pages/home_page.dart';
@@ -8,8 +7,7 @@ import '../bloc/auth_bloc.dart';
 import '../widgets/auth_web.dart';
 
 class AuthPage extends StatefulWidget {
-  static const String authPageName = 'auth';
-  static const String authPagePath = '/auth';
+  static const String path = '/auth';
   const AuthPage({super.key});
 
   @override
@@ -41,9 +39,11 @@ class _AuthPageState extends State<AuthPage> {
       listenWhen: (previous, current) =>
           current.isAuthorized || current.isGuest || current.isFailure,
       listener: (context, state) => state.when(
-        whenGuest: () => context.go(HomePage.homePagePath),
-        whenAuthorized: () {},
-        whenFailure: () {},
+        whenGuest: () => Navigator.of(context)
+            .pushNamedAndRemoveUntil(HomePage.path, (route) => false),
+        whenAuthorized: () => Navigator.of(context)
+            .pushNamedAndRemoveUntil(HomePage.path, (route) => false),
+        whenFailure: () => debugPrint(state.failure.toString()),
       ),
       child: Responsive(
         mobile: const Center(
