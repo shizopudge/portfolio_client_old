@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class Url extends Equatable {
-  final String id;
+  final int id;
   final String name;
   final String link;
 

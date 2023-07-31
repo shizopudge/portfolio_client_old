@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/services/adaptative.dart';
-import '../../../home/presentation/pages/home_page.dart';
+import '../../../../core/services/popup.dart';
+import '../../../home/pages/home_page.dart';
 import '../bloc/auth_bloc.dart';
 import '../widgets/auth_web.dart';
 
@@ -43,7 +44,8 @@ class _AuthPageState extends State<AuthPage> {
             .pushNamedAndRemoveUntil(HomePage.path, (route) => false),
         whenAuthorized: () => Navigator.of(context)
             .pushNamedAndRemoveUntil(HomePage.path, (route) => false),
-        whenFailure: () => debugPrint(state.failure.toString()),
+        whenFailure: () => Popup.showSnackBar(
+            context: context, message: state.failure.toString()),
       ),
       child: Responsive(
         mobile: const Center(

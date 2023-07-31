@@ -5,13 +5,21 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/domain/entities/failure/failure.dart';
+import '../../../../core/domain/usecase/usecase.dart';
+import '../../domain/usecases/get_is_signed_in_as_guest.dart';
+import '../../domain/usecases/toggle_guest.dart';
 
 part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc() : super(const AuthState()) {
+  AuthBloc({
+    required GetIsSignedInAsGuest getIsSignedInAsGuest,
+    required SetIsSignedInAsGuest setIsSignedInAsGuest,
+  })  : _getIsSignedInAsGuestUseCase = getIsSignedInAsGuest,
+        _setIsSignedInAsGuestUsecase = setIsSignedInAsGuest,
+        super(const AuthState()) {
     on<_Started>(_started);
     on<_ToggleSignInForm>(_toggleSignInForm);
     on<_SetUsername>(_setUsername);
@@ -20,10 +28,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_Logout>(_logout);
   }
 
+  final GetIsSignedInAsGuest _getIsSignedInAsGuestUseCase;
+  final SetIsSignedInAsGuest _setIsSignedInAsGuestUsecase;
+
   FutureOr<void> _started(_Started event, Emitter<AuthState> emit) async {
-    // Check is user signed in or guest
-    await Future.delayed(const Duration(milliseconds: 500));
-    emit(state.copyWith(status: AuthStatus.notAuthorized));
+    final res = await _getIsSignedInAsGuestUseCase.call(NoParams());
+    res.fold(
+        (failure) => emit(state.copyWith(status: AuthStatus.notAuthorized)),
+        (isSignedInAsGuest) {
+      if (isSignedInAsGuest) {
+        emit(state.copyWith(status: AuthStatus.guest));
+      } else {
+        emit(state.copyWith(status: AuthStatus.notAuthorized));
+      }
+    });
   }
 
   void _toggleSignInForm(_ToggleSignInForm event, Emitter<AuthState> emit) {
@@ -42,11 +60,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   FutureOr<void> _signInAsGuest(
       _SignInAsGuest event, Emitter<AuthState> emit) async {
-    // Set guest in shared_prefs
-    emit(state.copyWith(status: AuthStatus.guest));
+    final res = await _setIsSignedInAsGuestUsecase
+        .call(const SetIsSignedInAsGuestParams(true));
+    res.fold(
+        (failure) => emit(state.copyWith(status: AuthStatus.notAuthorized)),
+        (r) => emit(state.copyWith(status: AuthStatus.guest)));
   }
 
   FutureOr<void> _logout(event, Emitter<AuthState> emit) async {
-    emit(state.copyWith(status: AuthStatus.notAuthorized));
+    final res = await _setIsSignedInAsGuestUsecase
+        .call(const SetIsSignedInAsGuestParams(false));
+    res.fold(
+        (failure) => emit(state.copyWith(status: AuthStatus.notAuthorized)),
+        (r) => emit(state.copyWith(status: AuthStatus.notAuthorized)));
   }
 }

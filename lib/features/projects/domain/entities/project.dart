@@ -6,7 +6,7 @@ import 'technology.dart';
 import 'url.dart';
 
 class Project extends Equatable {
-  final String id;
+  final int id;
   final String name;
   final String? description;
   final String slug;

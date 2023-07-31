@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/domain/entities/failure/failure.dart';
 
 abstract interface class SettingsLocalDataSource {
-  Future<void> preloadAssetImage({
+  Future<void> preloadWallpaper({
     required BuildContext context,
     required AssetImage image,
   });
@@ -11,7 +11,7 @@ abstract interface class SettingsLocalDataSource {
 
 class SettingsLocalDataSourceImpl implements SettingsLocalDataSource {
   @override
-  Future<void> preloadAssetImage({
+  Future<void> preloadWallpaper({
     required BuildContext context,
     required AssetImage image,
   }) async {

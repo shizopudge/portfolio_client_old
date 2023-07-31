@@ -6,7 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/constants/assets.dart';
 import '../../../../core/domain/entities/failure/failure.dart';
-import '../../domain/usecases/preload_asset_image.dart';
+import '../../domain/usecases/preload_wallpaper.dart';
 
 part 'settings_bloc.freezed.dart';
 part 'settings_event.dart';
@@ -15,14 +15,14 @@ part 'settings_state.dart';
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   SettingsBloc({
     required this.context,
-    required PreloadAssetImage preloadAssetImageUsecase,
+    required PreloadWallpaper preloadAssetImageUsecase,
   })  : _preloadAssetImageUsecase = preloadAssetImageUsecase,
         super(const SettingsState()) {
     on<_Started>(_started);
   }
 
   final BuildContext context;
-  final PreloadAssetImage _preloadAssetImageUsecase;
+  final PreloadWallpaper _preloadAssetImageUsecase;
 
   FutureOr<void> _started(_Started event, Emitter<SettingsState> emit) async {
     emit(state.copyWith(status: SettingsStatus.loading));

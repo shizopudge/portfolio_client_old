@@ -4,12 +4,12 @@ import '../../../../core/constants/type_defs.dart';
 import '../../../../core/domain/usecase/usecase.dart';
 import '../repositories/settings_repository.dart';
 
-class PreloadAssetImage implements UseCase<void, PreloadAssetImageParams> {
+class PreloadWallpaper implements UseCase<void, PreloadAssetImageParams> {
   final SettingsRepository repository;
 
-  const PreloadAssetImage(this.repository);
+  const PreloadWallpaper(this.repository);
   @override
-  FutureEither<void> call(params) async => await repository.preloadAssetImage(
+  FutureEither<void> call(params) async => await repository.preloadWallpaper(
       context: params.context, image: params.image);
 }
 

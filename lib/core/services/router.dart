@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/auth/presentation/pages/auth_page.dart';
-import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/home/cubit/home_cubit.dart';
+import '../../features/home/pages/home_page.dart';
 import '../../features/settings/presentation/bloc/settings_bloc.dart';
+import '../presentation/widgets/common/access_listener.dart';
 import '../presentation/widgets/pages/splash_page.dart';
 
 class AppRouter {
@@ -29,7 +31,12 @@ class AppRouter {
       case HomePage.path:
         return MaterialPageRoute(
           settings: routeSettings,
-          builder: (context) => const HomePage(),
+          builder: (context) => AccessListener(
+            child: BlocProvider(
+              create: (_) => HomeCubit(),
+              child: const HomePage(),
+            ),
+          ),
         );
       default:
         return null;

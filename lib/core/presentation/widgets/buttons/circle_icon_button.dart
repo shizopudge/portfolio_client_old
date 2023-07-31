@@ -1,10 +1,10 @@
-import '../../animations/opacity_animation.dart';
-import '../../animations/slide_animation.dart';
-import '../../../styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart';
 
+import '../../../styles/colors.dart';
 import '../../animations/hover_animation.dart';
+import '../../animations/opacity_animation.dart';
+import '../../animations/slide_animation.dart';
 
 class CircleIconButton extends StatelessWidget {
   final VoidCallback onPressed;

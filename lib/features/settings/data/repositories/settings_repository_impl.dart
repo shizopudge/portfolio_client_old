@@ -13,12 +13,12 @@ class SettingsRepositoryImpl implements SettingsRepository {
     required this.localDataSource,
   });
   @override
-  FutureEither<void> preloadAssetImage({
+  FutureEither<void> preloadWallpaper({
     required BuildContext context,
     required AssetImage image,
   }) async {
     try {
-      await localDataSource.preloadAssetImage(context: context, image: image);
+      await localDataSource.preloadWallpaper(context: context, image: image);
       return const Right(null);
     } on Failure catch (e) {
       return Left(e);

@@ -42,11 +42,12 @@ class _AppSkeletonState extends State<AppSkeleton> {
         const Wallpaper(),
         widget.child ?? const SizedBox.shrink(),
         SlideAnimation(
+          begin: const Offset(0, -1),
           duration: const Duration(milliseconds: 400),
           child: OpacityAnimation(
             duration: const Duration(milliseconds: 500),
             child: Container(
-              height: 50,
+              height: 40,
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
               color: Pallete.primary,

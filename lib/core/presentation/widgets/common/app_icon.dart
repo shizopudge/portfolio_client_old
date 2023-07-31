@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AppIcon extends StatelessWidget {
-  final VoidCallback? onTap;
+  final VoidCallback onTap;
   final String name;
   final String imagePath;
   final bool isSelected;
   const AppIcon({
     super.key,
-    this.onTap,
+    required this.onTap,
     required this.name,
     required this.imagePath,
     required this.isSelected,
